@@ -68,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="pH0-1e-BN4"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="pH0-1e-BN4"/>
                     <navigationItem key="navigationItem" id="pyu-Ds-uG9"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
@@ -98,7 +98,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Ee2-ju-BCr"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="Ee2-ju-BCr"/>
                     <navigationItem key="navigationItem" id="INs-8t-wvd"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -143,7 +143,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="whH-pE-7A4"/>
+                    <tabBarItem key="tabBarItem" title="Capture" id="whH-pE-7A4"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vva-9x-I00" userLabel="First Responder" sceneMemberID="firstResponder"/>
