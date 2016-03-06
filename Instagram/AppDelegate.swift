@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //setup for tab view
+/*        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let homeNavigationController = storyboard.instantiateViewControllerWithIdentifier("HomeNavigationController") as! UINavigationController
+        let homeViewController = homeNavigationController.topViewController as! HomeViewController
+        homeNavigationController.tabBarItem.title = "Home"
+        //homeNavigationController.tabBarItem.image = UIImage(named: "IMAGE FILE NAME")
+        
+        let captureNavigationController = storyboard.instantiateViewControllerWithIdentifier("HomeNavigationController") as! UINavigationController
+        let captureViewController = captureNavigationController.topViewController as! HomeViewController
+        captureNavigationController.tabBarItem.title = "Capture"
+        //captureNavigationController.tabBarItem.image = UIImage(named: "IMAGE FILE NAME")
+        
+        let profileNavigationController = storyboard.instantiateViewControllerWithIdentifier("ProfileNavigationController") as! UINavigationController
+        let profileViewController = profileNavigationController.topViewController as! ProfileViewController
+        profileNavigationController.tabBarItem.title = "Profile"
+        //profileNavigationController.tabBarItem.image = UIImage(named: "IMAGE FILE NAME")
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [homeNavigationController, captureNavigationController, profileNavigationController]
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible() */
+        
+        // setup for Parse pod
+        Parse.initializeWithConfiguration(
+            ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
+                configuration.applicationId = "Instagram"
+                configuration.clientKey = "iewpjgphdbahj3jpgvpapojwp3j4"
+                configuration.server = "https://sheltered-sands-31444.herokuapp.com/parse"
+            })
+        )
+        
+        // check if user is logged in.
+        if PFUser.currentUser() == nil {
+            // if there is a logged in user then load the home view controller
+            print("There is no current user.")
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+            window?.rootViewController = vc
+        }
+        
         return true
     }
 
