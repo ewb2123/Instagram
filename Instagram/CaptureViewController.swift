@@ -8,28 +8,22 @@
 
 import UIKit
 import Parse
+import ParseUI
 
 class CaptureViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
 
+    @IBOutlet var captureImageView: PFImageView!
+    @IBOutlet weak var captionField: UITextField!
+    
+    let imagePicker = UIImagePickerController()
+    var newPost: Post?
+    var imageSetter: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-/*        // Capture from camera
-        let vc = UIImagePickerController()
-        vc.delegate = self
-        vc.allowsEditing = true
-        vc.sourceType = UIImagePickerControllerSourceType.Camera
-        
-        self.presentViewController(vc, animated: true, completion: nil)
-*/
-        // picture from photolibrary
-        let vc = UIImagePickerController()
-        vc.delegate = self
-        vc.allowsEditing = true
-        vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        
-        self.presentViewController(vc, animated: true, completion: nil)
+        imagePicker.delegate = self
         
     }
     
@@ -40,6 +34,10 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
             let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
             
             // Do something with the images (based on your use case)
+            captureImageView.image = editedImage
+            self.imageSetter = editedImage
+                
+            
             
             // Dismiss UIImagePickerController to go back to your original view controller
             dismissViewControllerAnimated(true, completion: nil)
@@ -72,5 +70,33 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func onTakePicture(sender: AnyObject) {
+        // Capture from camera
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        vc.sourceType = UIImagePickerControllerSourceType.Camera
+        
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func onSelectPicture(sender: AnyObject) {
+        // picture from photolibrary
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        
+        self.presentViewController(vc, animated: true, completion: nil)
+
+    }
+    
+    @IBAction func onSubmit(sender: AnyObject) {
+        Post.postUserImage(imageSetter, withCaption: captionField.text, withCompletion: nil)
+        
+        
+    }
+    
 
 }
